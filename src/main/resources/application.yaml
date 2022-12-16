@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/praticando-modelMapper
+    url: jdbc:postgresql://localhost:5432/praticando-modelmapper
     username: postgres
     password: vini4222
   jpa:
