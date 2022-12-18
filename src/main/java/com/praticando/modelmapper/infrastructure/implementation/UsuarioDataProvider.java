@@ -1,7 +1,5 @@
 package com.praticando.modelmapper.infrastructure.implementation;
 
-import com.praticando.modelmapper.api.models.request.UsuarioModelRequest;
-import com.praticando.modelmapper.api.models.response.UsuarioModelResponse;
 import com.praticando.modelmapper.domain.domain.UsuarioDomain;
 import com.praticando.modelmapper.domain.getway.UsuarioGateway;
 import com.praticando.modelmapper.infrastructure.entities.UsuarioEntity;
