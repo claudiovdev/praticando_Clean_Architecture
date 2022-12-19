@@ -5,6 +5,7 @@ import com.praticando.modelmapper.api.models.request.UsuarioModelRequest;
 import com.praticando.modelmapper.api.models.response.UsuarioModelResponse;
 import com.praticando.modelmapper.domain.domain.UsuarioDomain;
 import com.praticando.modelmapper.domain.getway.UsuarioGateway;
+import com.praticando.modelmapper.domain.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class UsuarioController {
 
 
     @Autowired
-    private UsuarioGateway usuarioGateway;
+   private UsuarioService usuarioService;
 
 
     @Autowired
@@ -26,8 +27,8 @@ public class UsuarioController {
     @PostMapping
     public UsuarioModelResponse cadastrarUsuario(@RequestBody UsuarioModelRequest usuarioModelRequest){
         UsuarioDomain usuario = mapperApi.toDomain(usuarioModelRequest);
-        UsuarioDomain atualizado = usuarioGateway.cadastrar(usuario);
-        UsuarioModelResponse usuarioModelResponse =  mapperApi.toResponse(atualizado);
+       usuario =  usuarioService.cadastrar(usuario);
+        UsuarioModelResponse usuarioModelResponse =  mapperApi.toResponse(usuario);
         return usuarioModelResponse;
     }
 }
