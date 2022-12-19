@@ -12,7 +12,7 @@
 	<artifactId>modelmapper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>modelmapper</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Projeto criado apenas para testar o mapeamento criando apenas o metodo post</description>
 	<properties>
 		<java.version>17</java.version>
 		<modelmapper.version>3.1.0</modelmapper.version>
