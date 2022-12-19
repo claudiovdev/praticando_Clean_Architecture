@@ -1,8 +1,8 @@
 package com.praticando.modelmapper.domain.getway;
-
-import com.praticando.modelmapper.api.models.request.UsuarioModelRequest;
-import com.praticando.modelmapper.api.models.response.UsuarioModelResponse;
 import com.praticando.modelmapper.domain.domain.UsuarioDomain;
+import org.springframework.stereotype.Component;
+
+
 
 public interface UsuarioGateway {
 
