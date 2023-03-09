@@ -17,4 +17,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioDomain cadastrar(UsuarioDomain usuarioDomain) {
         return usuarioGateway.cadastrar(usuarioDomain);
     }
+
+    @Override
+    public UsuarioDomain buscarPorId(String usuarioId) {
+        return usuarioGateway.buscarporId(usuarioId);
+    }
 }

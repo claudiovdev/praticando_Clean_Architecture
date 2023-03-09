@@ -7,10 +7,9 @@ import com.praticando.modelmapper.domain.domain.UsuarioDomain;
 import com.praticando.modelmapper.domain.getway.UsuarioGateway;
 import com.praticando.modelmapper.domain.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("usuarios")
@@ -25,10 +24,19 @@ public class UsuarioController {
     private UsuarioMapperApi mapperApi;
 
     @PostMapping
-    public UsuarioModelResponse cadastrarUsuario(@RequestBody UsuarioModelRequest usuarioModelRequest){
+    public ResponseEntity<UsuarioModelResponse>  cadastrarUsuario(@RequestBody UsuarioModelRequest usuarioModelRequest){
         UsuarioDomain usuario = mapperApi.toDomain(usuarioModelRequest);
        usuario =  usuarioService.cadastrar(usuario);
         UsuarioModelResponse usuarioModelResponse =  mapperApi.toResponse(usuario);
-        return usuarioModelResponse;
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioModelResponse);
     }
+
+    @GetMapping("buscar/{usuarioId}")
+    public ResponseEntity<UsuarioModelResponse> buscarUsuario(@PathVariable String usuarioId){
+        UsuarioDomain usuario = usuarioService.buscarPorId(usuarioId);
+        UsuarioModelResponse usuarioModelResponse = mapperApi.toResponse(usuario);
+        return ResponseEntity.ok().body(usuarioModelResponse);
+    }
+
+
 }
