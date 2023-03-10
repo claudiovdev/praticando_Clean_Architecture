@@ -2,11 +2,12 @@ package com.praticando.modelmapper.infrastructure.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.praticando.modelmapper.infrastructure.enums.StatusUsuario;
-import jakarta.persistence.*;
+
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity

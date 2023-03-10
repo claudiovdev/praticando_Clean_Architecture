@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class UsuarioMapperApi {
@@ -23,5 +25,9 @@ public class UsuarioMapperApi {
     public UsuarioDomain toDomain(UsuarioModelRequest usuarioModelRequest){
         UsuarioDomain usuarioDomain = mapper.map(usuarioModelRequest, UsuarioDomain.class);
         return usuarioDomain;
+    }
+
+    public List<UsuarioModelResponse> toResponseList(List<UsuarioDomain> usuarioDomainList) {
+        return usuarioDomainList.stream().map(usuarioDomain -> toResponse(usuarioDomain)).collect(Collectors.toList());
     }
 }

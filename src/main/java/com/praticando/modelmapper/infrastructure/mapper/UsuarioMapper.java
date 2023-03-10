@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class UsuarioMapper {
@@ -26,4 +28,7 @@ public class UsuarioMapper {
         return mapper.map(usuarioEntity, UsuarioDomain.class);
     }
 
+    public List<UsuarioDomain> toDomainList(List<UsuarioEntity> usuarioEntityList) {
+        return usuarioEntityList.stream().map(usuarioEntity -> toDomain(usuarioEntity)).collect(Collectors.toList());
+    }
 }
